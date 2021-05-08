@@ -14,8 +14,8 @@ import java.util.HashSet;
  * @author Usuario
  */
 public class Menu extends javax.swing.JFrame {
-private HashSet<Alumno> listAlumnos = new HashSet<>();
-private HashSet<Materia> listMaterias = new HashSet<>();
+private HashSet<Alumno> listaAlumnos = new HashSet<>();
+private HashSet<Materia> listaMaterias = new HashSet<>();
     /**
      * Creates new form Menu
      */
@@ -32,7 +32,7 @@ private HashSet<Materia> listMaterias = new HashSet<>();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -45,14 +45,14 @@ private HashSet<Materia> listMaterias = new HashSet<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 805, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 406, Short.MAX_VALUE)
         );
 
@@ -64,6 +64,11 @@ private HashSet<Materia> listMaterias = new HashSet<>();
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Alumno");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
 
         jMenuItem3.setText("Alta de Alumno");
         jMenu2.add(jMenuItem3);
@@ -73,6 +78,11 @@ private HashSet<Materia> listMaterias = new HashSet<>();
         jMenu3.setText("Registro");
 
         jMenuItem2.setText("Inscripcion");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem2);
 
         jMenuBar1.add(jMenu3);
@@ -90,15 +100,45 @@ private HashSet<Materia> listMaterias = new HashSet<>();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(escritorio)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+      
+        
+        listaAlumnos.add(new Alumno(1001 , "Lopez" , "Martin"));
+        listaAlumnos.add(new Alumno(1002 , "Martinez" , "Brenda"));
+        
+        listaMaterias.add(new Materia(100 , "Ingles 1" , 1));
+        listaMaterias.add(new Materia(101 , "lab1" , 1));
+        listaMaterias.add(new Materia(103 , "matematicas" , 1));
+        
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        Inscripcion inscripcion = new Inscripcion(listaAlumnos , listaMaterias);
+        inscripcion.setVisible(true);
+        escritorio.add(inscripcion);
+        escritorio.moveToFront(inscripcion);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        FormAlumno al = new FormAlumno(listaAlumnos);
+        al.setVisible(true);
+        escritorio.add(al);
+        escritorio.moveToFront(al);
+    }//GEN-LAST:event_jMenu2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,7 +176,7 @@ private HashSet<Materia> listMaterias = new HashSet<>();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

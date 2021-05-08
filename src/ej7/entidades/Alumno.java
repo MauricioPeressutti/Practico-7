@@ -1,12 +1,17 @@
 package ej7.entidades;
 
-public class Alumno {
+import java.util.HashSet;
+import javax.swing.JOptionPane;
+
+public class Alumno{
 
     private int legajo;
 
     private String apellido;
 
     private String nombre;
+    
+    private HashSet<Materia> materias= new HashSet<>();
 
     public Alumno(int legajo, String apellido, String Nombre) {
     }
@@ -36,9 +41,23 @@ public class Alumno {
     }
     
     public int cantidadMaterias() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return materias.size();
     }
 
     public void agregarMateria(Materia m) {
+        if(materias.add(m)== false){
+            JOptionPane.showMessageDialog(null , "Materia duplicada");
+        }else{
+            JOptionPane.showMessageDialog(null , "Inscripcion correcta");
+        }
     }
+
+    @Override
+    public String toString() {
+        return apellido + ", " + nombre;
+    }
+    
+    
+    
+    
 }
